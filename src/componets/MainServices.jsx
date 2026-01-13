@@ -4,6 +4,7 @@ import ServiceHero from './ServiceHero'
 import ServiceFocus from './ServiceFocus'
 import PriceModel from './PriceModel'
 import Architect from './Architect'
+import Fluid from './Fluid
 
 const MainServices = () => {
   return (
@@ -12,9 +13,11 @@ const MainServices = () => {
         <Architect />
         <Services />
         <ServiceFocus />
-        <PriceModel />
+      <Fluid />
+        {/* <PriceModel /> */}
     </div>
   )
 }
+
 
 export default MainServices
