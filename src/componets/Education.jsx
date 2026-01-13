@@ -23,7 +23,7 @@ const education = [
     // certLink: "/path-to-your-image2.jpg"
   },
   {
-    degree: "HSC",
+    degree: "SSC",
     institute: "mahatma basweshwar Vidyalay , Omerga",
     year: "2009 - 2019",
     cgpa: "Verified",
@@ -141,4 +141,5 @@ const EducationItem = ({ edu, index, isLast }) => {
       </div>
     </motion.div>
   );
+
 };
