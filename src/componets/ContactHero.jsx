@@ -63,7 +63,7 @@ const ContactHero = () => {
               </div>
               
               <div className="flex flex-col gap-4">
-                <a href="mailto:hello@yourdomain.com" className="group flex items-center justify-between p-6 bg-white/[0.03] border border-white/5 rounded-2xl hover:border-yellow-400/50 transition-all">
+                <a href="mailto:byalerohan@gmail.com" className="group flex items-center justify-between p-6 bg-white/[0.03] border border-white/5 rounded-2xl hover:border-yellow-400/50 transition-all">
                   <div className="flex items-center gap-4">
                     <FiMail className="text-neutral-500 group-hover:text-yellow-400 transition-colors" />
                     <span className="text-xs font-bold text-white uppercase tracking-widest">byalerohan@gmail.com</span>
@@ -107,5 +107,6 @@ const ContactHero = () => {
     </section>
   );
 };
+
 
 export default ContactHero;
