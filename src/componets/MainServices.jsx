@@ -4,7 +4,7 @@ import ServiceHero from './ServiceHero'
 import ServiceFocus from './ServiceFocus'
 import PriceModel from './PriceModel'
 import Architect from './Architect'
-import Fluid from './Fluid
+import Fluid from './Fluid'
 
 const MainServices = () => {
   return (
@@ -21,3 +21,4 @@ const MainServices = () => {
 
 
 export default MainServices
+
