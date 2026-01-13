@@ -63,7 +63,7 @@ const LiquidNexus = () => {
               <span className="text-yellow-400">Engineering.</span>
             </h1>
             <p className="text-neutral-500 text-xl md:text-2xl max-w-xl font-medium tracking-tight">
-              We dissolve the boundaries between <span className="text-white italic">Design Logic</span> and <span className="text-white italic">Functional Code</span>.
+              I dissolve the boundaries between <span className="text-white italic">Design Logic</span> and <span className="text-white italic">Functional Code</span>.
             </p>
           </motion.div>
         </div>
@@ -103,5 +103,6 @@ const LiquidNexus = () => {
     </div>
   );
 };
+
 
 export default LiquidNexus;
