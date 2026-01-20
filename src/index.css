@@ -25,3 +25,15 @@
   pointer-events: none;
 }
 
+
+/* Chrome, Edge, Safari */
+::selection {
+  background: yellow;
+  color: black;
+}
+
+/* Firefox */
+::-moz-selection {
+  background: yellow;
+  color: black;
+}
