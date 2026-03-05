@@ -3,6 +3,34 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
 
+/* ------------------ Curtain Reveal Component ------------------ */
+const CurtainWord = ({ children, delay = 0 }) => {
+  return (
+    <span className="relative inline-flex overflow-hidden pb-1 mr-[0.25em] translate-y-1">
+      <motion.span 
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: delay + 0.1 }}
+        viewport={{ once: true }}
+        className="relative z-10 inline-block"
+      >
+        {children}
+      </motion.span>
+      <motion.div
+        initial={{ y: "-100%" }}
+        whileInView={{ y: "100%" }}
+        viewport={{ once: true }}
+        transition={{
+          duration: 0.6,
+          ease: [0.76, 0, 0.24, 1],
+          delay: delay,
+        }}
+        className="absolute inset-0 bg-yellow-400 z-20 pointer-events-none"
+      />
+    </span>
+  );
+};
+
 const education = [
   {
     degree: "B.E. Computer Science And Engineering",
@@ -11,7 +39,6 @@ const education = [
     cgpa: "7.7 SGPA",
     details: "Researching the intersection of generative AI and intuitive motion systems. Focus on cognitive load reduction.",
     status: "In Progress",
-    // certLink: "/path-to-your-image1.jpg" // Replace with your image link
   },
   {
     degree: "Diploma In Computer Technology",
@@ -20,16 +47,13 @@ const education = [
     cgpa: "73%",
     details: "Specialized in software architecture and computational geometry.",
     status: "Completed",
-    // certLink: "/path-to-your-image2.jpg"
   },
   {
     degree: "SSC",
     institute: "mahatma basweshwar Vidyalay , Omerga",
     year: "2009 - 2019",
     cgpa: "Verified",
-    // details: "Advanced certification in wireframing, high-fidelity prototyping, and accessibility standards.",
     status: "Certified",
-    // certLink: "/path-to-your-image3.jpg"
   }
 ];
 
@@ -46,7 +70,6 @@ export default function Education() {
             viewport={{ once: true }}
             className="flex items-center gap-4 mb-8"
           >
-            {/* <span className="w-8 h-[1px] bg-yellow-400" /> */}
             <p className="text-yellow-400 border p-2 rounded-2xl text-[10px] font-black tracking-[0.5em] uppercase">
               Qualifications
             </p>
@@ -95,7 +118,6 @@ const EducationItem = ({ edu, index, isLast }) => {
           <span className="text-neutral-600 font-mono text-[11px] uppercase tracking-widest">
             {edu.year}
           </span>
-          {/* Status Label - Redesigned to fit better */}
           <div className="text-[9px] font-bold uppercase tracking-[0.1em] text-neutral-500 flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-yellow-400/50" />
             {edu.status}
@@ -105,31 +127,24 @@ const EducationItem = ({ edu, index, isLast }) => {
         {/* MAIN CONTENT COLUMN */}
         <div className="flex-1">
           <div className="flex justify-between items-start gap-4 mb-4">
-            <h3 className="text-3xl md:text-4xl font-bold tracking-tight uppercase group-hover:text-yellow-400 transition-colors duration-500 leading-none">
-              {edu.degree}
+            <h3 className="text-3xl md:text-4xl font-bold tracking-tight uppercase group-hover:text-yellow-400 transition-colors duration-500 leading-none flex flex-wrap">
+              {edu.degree.split(" ").map((word, i) => (
+                <CurtainWord key={i} delay={0.1 + (i * 0.05)}>{word}</CurtainWord>
+              ))}
             </h3>
-            
-            {/* LINK TO CERTIFICATE */}
-            {/* <a 
-              href={edu.certLink} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="shrink-0 p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all duration-500 transform hover:scale-110 active:scale-95"
-              title="View Certificate"
-            >
-               <FiArrowUpRight className="text-xl" />
-            </a> */}
           </div>
 
           <p className="text-yellow-400/80 text-[10px] font-black uppercase tracking-[0.3em] mb-6">
             {edu.institute}
           </p>
           
-          <p className="text-neutral-500 text-lg font-light leading-relaxed max-w-2xl mb-10 group-hover:text-neutral-300 transition-colors">
-            {edu.details}
+          <p className="text-neutral-500 text-lg font-light leading-relaxed max-w-2xl mb-10 group-hover:text-neutral-300 transition-colors flex flex-wrap">
+            {edu.details && edu.details.split(" ").map((word, i) => (
+              <CurtainWord key={i} delay={0.3 + (i * 0.03)}>{word}</CurtainWord>
+            ))}
           </p>
 
-          {/* SCORE METRIC - Cleaned up */}
+          {/* SCORE METRIC */}
           <div className="inline-flex flex-col py-3 px-5 bg-white/[0.03] border border-white/5 rounded-xl">
             <span className="text-[8px] font-mono text-neutral-600 uppercase tracking-widest mb-1">Grade_Achieved</span>
             <span className="text-2xl font-black italic tracking-tighter text-white">
@@ -141,5 +156,4 @@ const EducationItem = ({ edu, index, isLast }) => {
       </div>
     </motion.div>
   );
-
 };
