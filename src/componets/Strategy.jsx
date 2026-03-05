@@ -2,6 +2,35 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
+/* ------------------ Curtain Reveal Component ------------------ */
+const CurtainWord = ({ children, delay = 0, color = "bg-yellow-400" }) => {
+  return (
+    <span className="relative inline-flex overflow-hidden pb-1 mr-[0.25em] translate-y-1">
+      <motion.span 
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: delay + 0.1 }}
+        viewport={{ once: true }}
+        className="relative z-10 inline-block"
+      >
+        {children}
+      </motion.span>
+      <motion.div
+        initial={{ y: "-100%" }}
+        whileInView={{ y: "100%" }}
+        viewport={{ once: true }}
+        transition={{
+          duration: 0.6,
+          ease: [0.76, 0, 0.24, 1],
+          delay: delay,
+        }}
+        // Dynamic color prop
+        className={`absolute inset-0 ${color} z-20 pointer-events-none`}
+      />
+    </span>
+  );
+};
+
 const steps = [
   {
     step: "01",
@@ -32,7 +61,6 @@ const steps = [
 const Process = () => {
   const containerRef = useRef(null);
   
-  // Track scroll for the "Timeline Line"
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"]
@@ -45,12 +73,10 @@ const Process = () => {
       ref={containerRef}
       className="relative bg-[#050505] text-white py-48 px-6 lg:px-24 overflow-hidden"
     >
-      {/* 🚀 BACKGROUND DECORATION */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-yellow-400/5 blur-[120px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* HEADER AREA */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-40 gap-8">
           <div className="max-w-3xl">
             <motion.div
@@ -59,7 +85,6 @@ const Process = () => {
               viewport={{ once: true }}
               className="flex items-center gap-4 mb-8"
             >
-              {/* <span className="w-12 h-[1px] bg-yellow-400" /> */}
               <p className="text-yellow-400 border p-2 rounded-2xl text-[10px] font-black tracking-[0.5em] uppercase">
                 Workflow // 04
               </p>
@@ -83,9 +108,7 @@ const Process = () => {
           </motion.p>
         </div>
 
-        {/* STEPS CONTAINER */}
         <div className="relative">
-          {/* ✨ PROGRESS LINE: This grows as you scroll */}
           <motion.div 
             style={{ scaleY, originY: 0 }}
             className="absolute left-[15px] md:left-1/2 top-0 w-[1px] h-full bg-gradient-to-b from-yellow-400 via-yellow-400 to-transparent z-0 hidden md:block"
@@ -97,9 +120,6 @@ const Process = () => {
             ))}
           </div>
         </div>
-
-       
-   
       </div>
     </section>
   );
@@ -116,10 +136,8 @@ const ProcessStep = ({ data, index }) => {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`relative flex flex-col md:flex-row items-center w-full ${isEven ? 'md:flex-row-reverse' : ''}`}
     >
-      {/* 1. CONTENT BLOCK */}
       <div className="w-full md:w-1/2 px-8 md:px-20">
         <div className="group relative">
-          {/* Floating Background Number */}
           <motion.span 
             className="absolute -top-16 -left-10 text-[12rem] font-black text-white/[0.03] select-none group-hover:text-yellow-400/10 transition-colors duration-700 group-hover:-translate-y-4 transition-transform"
           >
@@ -127,14 +145,17 @@ const ProcessStep = ({ data, index }) => {
           </motion.span>
 
           <div className="relative z-10">
-            <h3 className="text-4xl md:text-5xl font-bold mb-6 uppercase tracking-tighter">
-              {data.title}
+            <h3 className="text-4xl md:text-5xl font-bold mb-6 uppercase tracking-tighter flex flex-wrap">
+              {data.title.split(" ").map((word, i) => (
+                <CurtainWord key={i} delay={0.1} color="bg-emerald-500">{word}</CurtainWord>
+              ))}
             </h3>
-            <p className="text-neutral-400 text-lg font-light leading-relaxed mb-8">
-              {data.desc}
+            <p className="text-neutral-400 text-lg font-light leading-relaxed mb-8 flex flex-wrap">
+              {data.desc.split(" ").map((word, i) => (
+                <CurtainWord key={i} delay={0.2 + (i * 0.03)} color="bg-yellow-400">{word}</CurtainWord>
+              ))}
             </p>
             
-            {/* Dynamic Tags */}
             <div className="flex flex-wrap gap-3">
               {data.tags.map(tag => (
                 <span key={tag} className="px-3 py-1 border border-white/10 rounded-full text-[9px] uppercase tracking-widest text-neutral-500 group-hover:border-yellow-400/30 group-hover:text-yellow-400 transition-all">
@@ -146,7 +167,6 @@ const ProcessStep = ({ data, index }) => {
         </div>
       </div>
 
-      {/* 2. CENTER POINT (Dot on the timeline) */}
       <div className="absolute left-[15px] md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center z-20">
         <motion.div 
           whileInView={{ scale: [0, 1.5, 1], opacity: [0, 1] }}
@@ -155,7 +175,6 @@ const ProcessStep = ({ data, index }) => {
         <div className="absolute w-8 h-8 border border-yellow-400/20 rounded-full animate-ping" />
       </div>
 
-      {/* 3. EMPTY SIDE (Maintains the zig-zag) */}
       <div className="hidden md:block w-1/2" />
     </motion.div>
   );
