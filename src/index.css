@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
-  html {
-    scroll-behavior: smooth;
-  }
+
   
  
   html.lenis {
@@ -37,3 +35,4 @@
   background: yellow;
   color: black;
 }
+
