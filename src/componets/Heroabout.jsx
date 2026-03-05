@@ -1,10 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom'; // Added Link import
+import { Link } from 'react-router-dom';
 import { FiArrowUpRight, FiMousePointer } from 'react-icons/fi';
 
+/* ------------------ Curtain Reveal Component ------------------ */
+const CurtainWord = ({ children, delay = 0 }) => {
+  return (
+    // Added 'inline-flex' and adjusted margin for natural word spacing
+    <span className="relative inline-flex overflow-hidden pb-1 mr-[0.25em] translate-y-1">
+      <motion.span 
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: delay + 0.1 }}
+        viewport={{ once: true }}
+        className="relative z-10 inline-block"
+      >
+        {children}
+      </motion.span>
+      <motion.div
+        initial={{ y: "-100%" }}
+        whileInView={{ y: "100%" }}
+        viewport={{ once: true }}
+        transition={{
+          duration: 0.6,
+          ease: [0.76, 0, 0.24, 1],
+          delay: delay,
+        }}
+        className="absolute inset-0 bg-yellow-400 z-20 pointer-events-none"
+      />
+    </span>
+  );
+};
+
 const PortfolioHero = () => {
-  // Animation variants for the staggered text reveal
   const containerVars = {
     initial: { opacity: 0 },
     animate: {
@@ -32,7 +60,7 @@ const PortfolioHero = () => {
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
         
-        {/* MAIN HEADING WITH REVEAL ANIMATION */}
+        {/* MAIN HEADING */}
         <motion.div 
           variants={containerVars}
           initial="initial"
@@ -78,13 +106,31 @@ const PortfolioHero = () => {
             transition={{ delay: 1 }}
             className="max-w-md"
           >
-            <p className="text-neutral-500 text-sm md:text-base leading-relaxed uppercase tracking-tight">
-              I am <span className="text-white font-bold tracking-normal">ROHAN BYALE</span> — Crafting high-fidelity interfaces 
-              and seamless digital products that prioritize <span className="text-yellow-400 italic font-serif">human logic</span> over complexity.
+            {/* Added 'flex flex-wrap' here to fix the broken lines */}
+            <p className="text-neutral-500 text-sm md:text-base leading-relaxed uppercase tracking-tight flex flex-wrap items-center">
+              {"I am ".split(" ").map((word, i) => (
+                word && <CurtainWord key={`iam-${i}`} delay={1 + (i * 0.1)}>{word}</CurtainWord>
+              ))}
+              <span className="text-white font-bold tracking-normal inline-flex flex-wrap mr-[0.25em]">
+                {"ROHAN BYALE".split(" ").map((word, i) => (
+                  <CurtainWord key={`name-${i}`} delay={1.2 + (i * 0.1)}>{word}</CurtainWord>
+                ))}
+              </span>
+              {"— Crafting high-fidelity interfaces and seamless digital products that prioritize ".split(" ").map((word, i) => (
+                word && <CurtainWord key={`desc-${i}`} delay={1.4 + (i * 0.05)}>{word}</CurtainWord>
+              ))}
+              <span className="text-yellow-400 italic font-serif inline-flex flex-wrap mr-[0.25em]">
+                {"human logic".split(" ").map((word, i) => (
+                  <CurtainWord key={`logic-${i}`} delay={2.2 + (i * 0.1)}>{word}</CurtainWord>
+                ))}
+              </span>
+              {"over complexity.".split(" ").map((word, i) => (
+                word && <CurtainWord key={`end-${i}`} delay={2.4 + (i * 0.1)}>{word}</CurtainWord>
+              ))}
             </p>
           </motion.div>
 
-          {/* INTERACTIVE LINK (REPLACED 'A' TAG) */}
+          {/* CTA LINK */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -100,7 +146,6 @@ const PortfolioHero = () => {
                 <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center group-hover:border-yellow-400 transition-all duration-500">
                   <FiArrowUpRight className="text-white group-hover:text-yellow-400 transition-colors" size={28} />
                 </div>
-                {/* Spinning Text Circle */}
                 <div className="absolute inset-0 animate-[spin_8s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity">
                    <svg viewBox="0 0 100 100" className="w-full h-full">
                     <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
@@ -116,11 +161,9 @@ const PortfolioHero = () => {
               </div>
             </Link>
           </motion.div>
-
         </div>
       </div>
 
-      {/* BOTTOM DECORATION */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-neutral-800 hidden md:block">
         <p className="text-[10px] font-mono uppercase tracking-[1em]">Scroll to Explore</p>
       </div>
