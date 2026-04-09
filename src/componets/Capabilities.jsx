@@ -32,7 +32,7 @@ const CapabilitiesSection = () => {
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-12 border-b border-white/5 pb-16">
           <div className="max-w-xl">
             <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-yellow-400 mb-8 flex items-center gap-3">
-              <span className="w-8 h-px bg-yellow-400" /> 
+            
               <span className='rounded-full border border-white/20 px-4 py-1'>Capabilities</span>
             </h2>
             <h3 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-[0.9]">
