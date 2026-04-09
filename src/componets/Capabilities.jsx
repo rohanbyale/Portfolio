@@ -31,8 +31,8 @@ const CapabilitiesSection = () => {
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-24 border-b border-white/5 pb-16">
           <div className="max-w-xl">
             <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-yellow-400 mb-8 flex items-center gap-3">
-              <span className="w-8 h-px " /> 
-              <h1 className='rounded-2xl border p-2'>Capabilities</h1>
+              <span className="w-8 h-px bg-yellow-400" /> 
+              <span className='rounded-full border border-white/20 px-4 py-1'>Capabilities</span>
             </h2>
             <h3 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-[0.9]">
               Solving Problems <br /> 
@@ -41,7 +41,7 @@ const CapabilitiesSection = () => {
           </div>
           <div className="lg:max-w-xs pt-4">
             <p className="text-neutral-500 text-sm leading-relaxed mb-6 font-medium uppercase tracking-wide">
-              I  create digital products that don't just work—they inspire.
+              I create digital products that don't just work—they inspire.
             </p>
             <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group hover:border-yellow-400 transition-colors">
               <span className="text-white group-hover:text-yellow-400 text-xl">→</span>
@@ -49,8 +49,8 @@ const CapabilitiesSection = () => {
           </div>
         </div>
 
-        {/* LIST AREA */}
-        <div className="space-y-0">
+        {/* SQUARE GRID AREA */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-white/10">
           {services.map((service, index) => (
             <motion.div 
               key={index}
@@ -58,39 +58,43 @@ const CapabilitiesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group relative grid grid-cols-1 lg:grid-cols-12 gap-8 py-12 border-b border-white/5 hover:bg-white/[0.01] transition-all duration-500 px-4"
+              className="group relative aspect-square flex flex-col justify-between p-8 lg:p-12 border border-white/10 overflow-hidden transition-all duration-500"
             >
+              {/* Background Hover Effect */}
+              <div className="absolute inset-0 bg-yellow-400 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-tight" />
+
               {/* Number */}
-              <div className="lg:col-span-1">
-                <span className="text-[10px] font-mono text-neutral-600 group-hover:text-yellow-400 transition-colors">
+              <div className="relative z-10 flex justify-between items-start">
+                <span className="text-xs font-mono text-neutral-500 group-hover:text-black transition-colors font-bold">
                   {service.num}
                 </span>
+                <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-black/20 transition-colors">
+                    <span className="text-white group-hover:text-black text-sm">↗</span>
+                </div>
               </div>
 
-              {/* Title & Tags */}
-              <div className="lg:col-span-6">
-                <h4 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter mb-4">
+              {/* Title & Description */}
+              <div className="relative z-10">
+                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tighter mb-4 group-hover:text-black transition-colors">
                   {service.title}
                 </h4>
-                <div className="flex flex-wrap gap-2">
+                <p className="text-neutral-500 text-xs leading-relaxed mb-6 group-hover:text-black/80 transition-colors line-clamp-3">
+                  {service.desc}
+                </p>
+                
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1.5">
                   {service.tags.map((tag, i) => (
-                    <span key={i} className="text-[9px] font-black uppercase tracking-widest px-3 py-1 bg-white/5 text-neutral-400 rounded-full border border-white/5 group-hover:border-yellow-400/30 transition-colors">
+                    <span key={i} className="text-[8px] font-black uppercase tracking-widest px-2 py-1 bg-white/5 text-neutral-400 rounded-sm border border-white/5 group-hover:bg-black/10 group-hover:text-black group-hover:border-black/20 transition-colors">
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* Description */}
-              <div className="lg:col-span-5 flex items-center">
-                <p className="text-neutral-500 text-sm leading-relaxed max-w-sm group-hover:text-neutral-300 transition-colors">
-                  {service.desc}
-                </p>
-              </div>
-
-              {/* Hover Line Animation */}
+              {/* Bottom Decorative Line */}
               <motion.div 
-                className="absolute bottom-0 left-0 h-[1px] bg-yellow-400 w-0 group-hover:w-full transition-all duration-700"
+                className="absolute bottom-0 left-0 h-[2px] bg-black w-0 group-hover:w-full transition-all duration-700 z-20"
               />
             </motion.div>
           ))}
