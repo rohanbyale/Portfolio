@@ -28,7 +28,8 @@ const CapabilitiesSection = () => {
       <div className="max-w-7xl mx-auto">
         
         {/* HEADER AREA */}
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-24 border-b border-white/5 pb-16">
+        {/* Changed mb-24 to mb-12 to reduce gap */}
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-12 border-b border-white/5 pb-16">
           <div className="max-w-xl">
             <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-yellow-400 mb-8 flex items-center gap-3">
               <span className="w-8 h-px bg-yellow-400" /> 
@@ -43,8 +44,8 @@ const CapabilitiesSection = () => {
             <p className="text-neutral-500 text-sm leading-relaxed mb-6 font-medium uppercase tracking-wide">
               I create digital products that don't just work—they inspire.
             </p>
-            <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group hover:border-yellow-400 transition-colors">
-              <span className="text-white group-hover:text-yellow-400 text-xl">→</span>
+            <div className="w-12 h-12 rounded-full border border-yellow-400 flex items-center justify-center group transition-colors">
+              <span className="text-yellow-400 text-xl">→</span>
             </div>
           </div>
         </div>
@@ -58,44 +59,40 @@ const CapabilitiesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group relative aspect-square flex flex-col justify-between p-8 lg:p-12 border border-white/10 overflow-hidden transition-all duration-500"
+              /* Removed group hover logic, set background and text colors permanently */
+              className="relative aspect-square flex flex-col justify-between p-8 lg:p-12 border border-black/5 bg-yellow-400 overflow-hidden"
             >
-              {/* Background Hover Effect */}
-              <div className="absolute inset-0 bg-yellow-400 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-tight" />
-
               {/* Number */}
               <div className="relative z-10 flex justify-between items-start">
-                <span className="text-xs font-mono text-neutral-500 group-hover:text-black transition-colors font-bold">
+                <span className="text-xs font-mono text-black transition-colors font-bold">
                   {service.num}
                 </span>
-                <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-black/20 transition-colors">
-                    <span className="text-white group-hover:text-black text-sm">↗</span>
+                <div className="w-8 h-8 rounded-full border border-black/20 flex items-center justify-center">
+                    <span className="text-black text-sm">↗</span>
                 </div>
               </div>
 
               {/* Title & Description */}
               <div className="relative z-10">
-                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tighter mb-4 group-hover:text-black transition-colors">
+                <h4 className="text-2xl md:text-4xl font-black text-black uppercase tracking-tighter mb-4">
                   {service.title}
                 </h4>
-                <p className="text-neutral-500 text-xs leading-relaxed mb-6 group-hover:text-black/80 transition-colors line-clamp-3">
+                <p className="text-black/80 text-sm leading-tight mb-6 font-medium line-clamp-3">
                   {service.desc}
                 </p>
                 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-1.5">
                   {service.tags.map((tag, i) => (
-                    <span key={i} className="text-[8px] font-black uppercase tracking-widest px-2 py-1 bg-white/5 text-neutral-400 rounded-sm border border-white/5 group-hover:bg-black/10 group-hover:text-black group-hover:border-black/20 transition-colors">
+                    <span key={i} className="text-[9px] font-black uppercase tracking-widest px-2 py-1 bg-black/10 text-black rounded-sm border border-black/10">
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* Bottom Decorative Line */}
-              <motion.div 
-                className="absolute bottom-0 left-0 h-[2px] bg-black w-0 group-hover:w-full transition-all duration-700 z-20"
-              />
+              {/* Decorative Bottom Line - Now permanently visible */}
+              <div className="absolute bottom-0 left-0 h-[4px] bg-black w-full z-20" />
             </motion.div>
           ))}
         </div>
