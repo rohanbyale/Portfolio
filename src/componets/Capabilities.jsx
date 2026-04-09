@@ -51,7 +51,7 @@ const CapabilitiesSection = () => {
         </div>
 
         {/* SQUARE GRID AREA */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border border-white/10">
           {services.map((service, index) => (
             <motion.div 
               key={index}
