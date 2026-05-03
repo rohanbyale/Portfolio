@@ -52,7 +52,7 @@ const education = [
     degree: "SSC",
     institute: "mahatma basweshwar Vidyalay , Omerga",
     year: "2009 - 2019",
-    cgpa: "Verified",
+    cgpa: "87.60",
     status: "Certified",
   }
 ];
