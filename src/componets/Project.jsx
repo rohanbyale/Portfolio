@@ -13,10 +13,10 @@ const projects = [
     githubLink: "https://github.com/rohanbyale/Mammoth-Murals",
   },
   {
-    title: "Ochi Design",
+    title: "Dog Studio",
     category: "Portfolio",
     image: "/ochi.png",
-    stack: ["React.js", "Locomotive", "Tailwind"],
+    stack: ["React.js", "Three Js", "GLSL"],
     liveLink: "https://ochi-de-sign.netlify.app/",
     githubLink: "https://github.com/rohanbyale/Ochi-Design",
   },
