@@ -21,12 +21,12 @@ const projects = [
     githubLink: "https://github.com/rohanbyale/Ochi-Design",
   },
   {
-    title: "Lazarev",
-    category: "Personal Site",
+    title: "UrbanRise Builders",
+    category: "Company site Site",
     image: "/lazarev.png",
-    stack: ["Html", "JS", "Gsap"],
+    stack: ["React", "Tailwind", "Motion"],
     liveLink: "https://portfoli0-lazrev.netlify.app/",
-    // githubLink: "https://github.com",
+    githubLink: "https://github.com",
   },
   {
     title: "The Garrison Times",
