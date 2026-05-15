@@ -29,10 +29,10 @@ const projects = [
     githubLink: "https://github.com",
   },
   {
-    title: "The Garrison Times",
-    category: "Blog",
+    title: "Wood Craft",
+    category: "E commerce",
     image: "/peaky.png",
-    stack: ["Html", "JS", "Gsap"],
+    stack: ["React", "Tailwind Css", "Motion"],
     liveLink: "https://the-garrison-times.netlify.app/",
     githubLink: "https://github.com/rohanbyale/The-Garrison-Times",
   },
