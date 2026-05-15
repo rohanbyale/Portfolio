@@ -17,7 +17,7 @@ const projects = [
     category: "Portfolio",
     image: "/ochi.png",
     stack: ["React.js", "Three Js", "GLSL"],
-    liveLink: "https://ochi-de-sign.netlify.app/",
+    liveLink: "https://dog-studio-3d-eight.vercel.app/",
     githubLink: "https://github.com/rohanbyale/Ochi-Design",
   },
   {
