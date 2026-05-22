@@ -69,7 +69,7 @@ const About = () => {
             viewport={{ once: true }}
             className="flex items-center gap-4"
           >
-            <p className="border p-2 rounded-full uppercase tracking-[0.4em] text-xs font-bold text-yellow-400">
+            <p className="border p-2 rounded-md uppercase tracking-[0.4em] text-xs font-bold text-yellow-400">
               About Me
             </p>
           </motion.div>
