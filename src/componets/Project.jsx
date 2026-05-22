@@ -255,7 +255,7 @@ const ProjectsSection = () => {
             </div>
             <h2 className="text-6xl md:text-8xl font-bold tracking-tighter text-white leading-[0.9]">
               Featured <br />
-              <span className="text-neutral-700 italic font-light">Creations.</span>
+              <span className="text-gray-500 italic font-light">Creations.</span>
             </h2>
           </div>
           <div className="text-right hidden md:block">
