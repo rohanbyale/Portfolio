@@ -51,7 +51,7 @@ const Services = () => {
           >
            <h1 className="
   border 
-  rounded-2xl 
+  rounded-md
   px-4 py-2 
   text-center 
   w-fit 
