@@ -6,7 +6,7 @@ const techItems = [
   { name: "React", img: "https://skillicons.dev/icons?i=react" },
   { name: "Tailwind", img: "https://skillicons.dev/icons?i=tailwind" },
   { name: "TypeScript", img: "https://skillicons.dev/icons?i=ts" },
-  { name: "Framer", img: "https://skillicons.dev/icons?i=framer" },
+  { name: "Framer", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCq5gse3kEA76gI2S7FHh4TGq6-jE3nGlPQg&s" },
   { name: "NodeJS", img: "https://skillicons.dev/icons?i=nodejs" },
   { name: "Docker", img: "https://skillicons.dev/icons?i=docker" },
   { name: "PostgreSQL", img: "https://skillicons.dev/icons?i=postgres" },
@@ -44,7 +44,7 @@ const AgencyMarquee = () => {
                 <img
                   src={item.img}
                   alt={item.name}
-                  className="w-full h-full object-contain grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
+                  className="w-full h-full object-contain  transition-all duration-500 ease-out"
                 />
               </div>
               
