@@ -1,9 +1,8 @@
-
 import { motion } from 'framer-motion';
 import { Layers, Hexagon, Code2 } from 'lucide-react';
 
 /* ─────────────────────────────────────────────
-   MAIN COMPONENT
+    MAIN COMPONENT
 ───────────────────────────────────────────── */
 const CapabilitiesSection = () => {
   const services = [
@@ -31,94 +30,104 @@ const CapabilitiesSection = () => {
   ];
 
   return (
-    <section className="bg-[#050505] py-32 px-6 lg:px-24">
-      <div className="max-w-7xl mx-auto">
-
-        {/* HEADER */}
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-20 border-b border-white/5 pb-16">
+    <section className="bg-[#050505] py-20 md:py-32 px-4 sm:px-6 lg:px-24">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-12 relative items-start">
+        
+        {/* LEFT COLUMN: FIXED/STICKY HEADER (DESKTOP) */}
+        {/* On desktop, this side stays pinned in place while cards scroll on the right */}
+        <div className="w-full lg:w-[40%] lg:sticky lg:top-32 flex flex-col justify-between">
           <div className="max-w-xl">
-            <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-yellow-400 mb-8 flex items-center gap-3">
+            <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-yellow-400 mb-6 md:mb-8 flex items-center gap-3">
               <span className="rounded-full border border-white/20 px-4 py-1">Capabilities</span>
             </h2>
-            <h3 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-[0.9]">
+            <h3 className="text-4xl sm:text-5xl xl:text-7xl font-bold text-white tracking-tighter leading-[0.9] mb-6">
               Solving Problems <br />
               <span className="text-neutral-700 italic">Through Design.</span>
             </h3>
-          </div>
-          <div className="lg:max-w-xs pt-4">
-            <p className="text-neutral-500 text-sm leading-relaxed mb-6 font-medium uppercase tracking-wide">
+            <p className="text-neutral-500 text-sm leading-relaxed font-medium uppercase tracking-wide max-w-xs">
               I create digital products that don't just work—they inspire.
             </p>
           </div>
         </div>
 
-        {/* CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group relative aspect-[4/5] flex flex-col justify-between p-8 lg:p-10 bg-yellow-400 overflow-hidden rounded-sm"
-            >
-              {/* TOP NAV */}
-              <div className="relative z-20 flex justify-between items-center">
-                <span className="text-xs font-mono text-black font-black bg-black/5 px-2 py-1 rounded">
-                  {service.num}
-                </span>
-                <div className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-black group-hover:text-yellow-400 transition-all duration-500">
-                  <span className="text-lg">↗</span>
-                </div>
-              </div>
+        {/* RIGHT COLUMN: STACKING CARDS */}
+        {/* A single vertical track where items overlap smoothly based on viewport scrolling */}
+        <div className="w-full lg:w-[60%] flex flex-col gap-8 sm:gap-12 lg:gap-20">
+          {services.map((service, index) => {
+            // Calculates individual dynamic offsets so background card edges peek out
+            const mobileTopOffset = `${12 + index * 3}vh`;
+            const desktopTopOffset = `${16 + index * 4}vh`;
 
-              {/* CENTER ICON */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <motion.div
-                  animate={{ scale: [1, 1.06, 1] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="opacity-10 group-hover:opacity-20 transition-opacity duration-700"
-                >
-                  <service.Icon
-                    size={160}
-                    strokeWidth={0.6}
-                    className="text-black"
-                  />
-                </motion.div>
-              </div>
-
-              {/* BOTTOM TEXT */}
-              <div className="relative z-20">
-                {/* Small sharp icon above title */}
-                <div className="mb-4">
-                  <service.Icon
-                    size={28}
-                    strokeWidth={1.8}
-                    className="text-black/60 group-hover:text-black transition-colors duration-300"
-                  />
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
+                viewport={{ once: true, margin: '-60px' }}
+                style={{ 
+                  '--mobile-top': mobileTopOffset,
+                  '--desktop-top': desktopTopOffset 
+                }}
+                className="sticky w-full top-[var(--mobile-top)] lg:top-[var(--desktop-top)] aspect-[14/11] sm:aspect-[16/9] flex flex-col justify-between p-6 sm:p-10 bg-yellow-400 overflow-hidden rounded-2xl border border-black/5 shadow-[0_-20px_50px_rgba(0,0,0,0.4)] group"
+              >
+                {/* TOP NAV */}
+                <div className="relative z-20 flex justify-between items-center">
+                  <span className="text-xs font-mono text-black font-black bg-black/10 px-2.5 py-1 rounded">
+                    {service.num}
+                  </span>
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-black/15 flex items-center justify-center group-hover:bg-black group-hover:text-yellow-400 transition-all duration-500 cursor-pointer">
+                    <span className="text-base sm:text-lg">↗</span>
+                  </div>
                 </div>
-                <h4 className="text-3xl font-black text-black uppercase tracking-tighter mb-4 group-hover:translate-x-2 transition-transform duration-500">
-                  {service.title}
-                </h4>
-                <p className="text-black/70 text-sm leading-tight mb-6 font-medium max-w-[90%]">
-                  {service.desc}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {service.tags.map((tag, i) => (
-                    <span key={i}
-                      className="text-[8px] font-black uppercase tracking-widest px-2 py-1 border border-black/20 text-black rounded-full group-hover:bg-black group-hover:text-yellow-400 transition-colors duration-300">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
 
-              {/* GRAIN */}
-              <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-            </motion.div>
-          ))}
+                {/* BACKGROUND GRAPHIC */}
+                <div className="absolute inset-0 flex items-center justify-end pr-6 sm:pr-16 pointer-events-none">
+                  <motion.div
+                    animate={{ scale: [1, 1.04, 1] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                    className="opacity-[0.06] group-hover:opacity-15 transition-opacity duration-700"
+                  >
+                    <service.Icon
+                      size={260}
+                      strokeWidth={0.4}
+                      className="text-black"
+                    />
+                  </motion.div>
+                </div>
+
+                {/* CONTENT AREA */}
+                <div className="relative z-20 max-w-[85%] sm:max-w-[75%]">
+                  <div className="mb-2 sm:mb-4">
+                    <service.Icon
+                      size={28}
+                      strokeWidth={1.8}
+                      className="text-black/80"
+                    />
+                  </div>
+                  <h4 className="text-2xl sm:text-4xl font-black text-black uppercase tracking-tighter mb-2 sm:mb-4 group-hover:translate-x-2 transition-transform duration-500">
+                    {service.title}
+                  </h4>
+                  <p className="text-black/70 text-xs sm:text-base leading-snug mb-4 sm:mb-6 font-medium">
+                    {service.desc}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {service.tags.map((tag, i) => (
+                      <span key={i}
+                        className="text-[8px] sm:text-[9px] font-black uppercase tracking-widest px-2.5 py-1 border border-black/20 text-black rounded-full bg-black/5">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* MICRO GRAIN SURFACE TEXTURE */}
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+              </motion.div>
+            );
+          })}
         </div>
+
       </div>
     </section>
   );
