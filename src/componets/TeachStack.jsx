@@ -158,7 +158,7 @@ const TechStack = () => {
             className="flex items-center gap-4 mb-6"
           >
             {/* <span className="w-10 h-[1px] bg-yellow-400" /> */}
-            <p className="border p-2 rounded-2xl text-yellow-400 text-[10px] font-bold tracking-[0.4em] uppercase">
+            <p className="border p-2 rounded-md text-yellow-400 text-[10px] font-bold tracking-[0.4em] uppercase">
               Tech Stack
             </p>
           </motion.div>
