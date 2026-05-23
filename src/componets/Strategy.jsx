@@ -96,7 +96,7 @@ const Process = () => {
               viewport={{ once: true }}
               className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.85] uppercase"
             >
-              The <span className="text-neutral-800 italic font-light">Method.</span>
+              The <span className="text-gray-500 italic font-light">Method.</span>
             </motion.h2>
           </div>
           <motion.p 
