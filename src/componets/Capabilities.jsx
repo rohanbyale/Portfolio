@@ -38,11 +38,11 @@ const CapabilitiesSection = () => {
         <div className="w-full lg:w-[40%] lg:sticky lg:top-32 flex flex-col justify-between">
           <div className="max-w-xl">
             <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-yellow-400 mb-6 md:mb-8 flex items-center gap-3">
-              <span className="rounded-full border border-white/20 px-4 py-1">Capabilities</span>
+              <span className="rounded-md border border-white/20 px-4 py-1">Capabilities</span>
             </h2>
             <h3 className="text-4xl sm:text-5xl xl:text-7xl font-bold text-white tracking-tighter leading-[0.9] mb-6">
               Solving Problems <br />
-              <span className="text-neutral-700 italic">Through Design.</span>
+              <span className="text-gray-500 sm:text-2xl xl:text-2xl  italic">Through Design.</span>
             </h3>
             <p className="text-neutral-500 text-sm leading-relaxed font-medium uppercase tracking-wide max-w-xs">
               I create digital products that don't just work—they inspire.
