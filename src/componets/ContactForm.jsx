@@ -53,7 +53,7 @@ const ContactForm = () => {
               <motion.h2 variants={itemVariants} className="text-[10px] font-black uppercase tracking-[0.5em] text-yellow-400 mb-8 flex items-center gap-3">
                 <span className="w-8 h-px " /><h1 className="
   border 
-  rounded-2xl 
+  rounded-md
   px-4 py-2 
   text-center 
   w-fit 
