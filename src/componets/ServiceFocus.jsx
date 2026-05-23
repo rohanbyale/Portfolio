@@ -37,7 +37,7 @@ const ServiceFocus = () => {
               <p className="text-[10px] font-black uppercase tracking-[0.5em] text-yellow-400 mb-4">
                 <h1 className="
   border 
-  rounded-2xl 
+  rounded-md
   px-4 py-2 
   text-center 
   w-fit 
@@ -50,7 +50,7 @@ const ServiceFocus = () => {
 </h1>
               </p>
               <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter leading-none">
-                Strategic <br/> <span className="text-neutral-800 italic font-light">Execution.</span>
+                Strategic <br/> <span className="text-gray-500 italic font-light">Execution.</span>
               </h2>
             </div>
 
