@@ -66,7 +66,7 @@ get in touch
 
               </motion.h2>
               <motion.h3 variants={itemVariants} className="text-6xl font-bold text-white tracking-tighter uppercase leading-[0.9] mb-8">
-                Let's Talk <br /> <span className="text-neutral-800 italic font-light">Strategy.</span>
+                Let's Talk <br /> <span className="text-gray-500 italic font-light">Strategy.</span>
               </motion.h3>
               <motion.p variants={itemVariants} className="text-neutral-500 text-sm leading-relaxed max-w-xs mb-10">
                 Ready to elevate your digital presence? I specialize in turning complex ideas into intuitive visual experiences.
