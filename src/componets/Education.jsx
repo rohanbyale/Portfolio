@@ -138,7 +138,7 @@ const EducationItem = ({ edu, index, isLast }) => {
             {edu.institute}
           </p>
           
-          <p className="text-neutral-500 text-lg font-light leading-relaxed max-w-2xl mb-10 group-hover:text-neutral-300 transition-colors flex flex-wrap">
+          <p className="text-gray-500 text-lg font-light leading-relaxed max-w-2xl mb-10 group-hover:text-neutral-300 transition-colors flex flex-wrap">
             {edu.details && edu.details.split(" ").map((word, i) => (
               <CurtainWord key={i} delay={0.3 + (i * 0.03)}>{word}</CurtainWord>
             ))}
