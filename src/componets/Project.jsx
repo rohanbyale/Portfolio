@@ -251,7 +251,7 @@ const ProjectsSection = () => {
           <div className="space-y-6">
             <div className="flex items-center gap-4">
               {/* <span className="w-16 h-[1px] bg-yellow-400" /> */}
-              <span className="text-xs font-black uppercase tracking-[0.6em] border p-2 rounded-2xl  text-yellow-400">Selected Archive</span>
+              <span className="text-xs font-black uppercase tracking-[0.6em] border p-2 rounded-md  text-yellow-400">Selected Archive</span>
             </div>
             <h2 className="text-6xl md:text-8xl font-bold tracking-tighter text-white leading-[0.9]">
               Featured <br />
