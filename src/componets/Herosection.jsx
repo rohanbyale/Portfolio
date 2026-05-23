@@ -359,7 +359,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.8, duration: 1 }}
-            className="text-neutral-500 text-lg md:text-xl max-w-md leading-relaxed mb-12 font-medium"
+            className="text-gray-500 text-lg md:text-xl max-w-md leading-relaxed mb-12 font-medium"
           >
             Bridging the gap between{" "}
             <span className="text-white">complex engineering</span> and{" "}
