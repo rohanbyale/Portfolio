@@ -25,39 +25,109 @@ const stack = [
   {
     title: "Languages",
     items: [
-      { name: "JavaScript", icon: SiJavascript },
-      { name: "TypeScript", icon: SiTypescript },
-     
+      {
+        name: "JavaScript",
+        icon: SiJavascript,
+        color: "#F7DF1E",
+      },
+      {
+        name: "TypeScript",
+        icon: SiTypescript,
+        color: "#3178C6",
+      },
     ],
   },
+
   {
     title: "Frontend",
     items: [
-      { name: "HTML5", icon: SiHtml5 },
-      { name: "CSS3", icon: SiCss3 },
-      { name: "React", icon: SiReact },
-      { name: "Next.js", icon: SiNextdotjs },
-      { name: "Tailwind CSS", icon: SiTailwindcss },
-      { name: "Framer Motion", icon: SiFramer },
-      { name: "GSAP", icon: SiGreensock },
+      {
+        name: "HTML5",
+        icon: SiHtml5,
+        color: "#E34F26",
+      },
+      {
+        name: "CSS3",
+        icon: SiCss3,
+        color: "#1572B6",
+      },
+      {
+        name: "React",
+        icon: SiReact,
+        color: "#61DAFB",
+      },
+      {
+        name: "Next.js",
+        icon: SiNextdotjs,
+        color: "#000000",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: SiTailwindcss,
+        color: "#06B6D4",
+      },
+      {
+        name: "Framer Motion",
+        icon: SiFramer,
+        color: "#0055FF",
+      },
+      {
+        name: "GSAP",
+        icon: SiGreensock,
+        color: "#88CE02",
+      },
     ],
   },
+
   {
     title: "Backend & Database",
     items: [
-      { name: "Node.js", icon: SiNodedotjs },
-      { name: "Express", icon: SiExpress },
-      { name: "JWT Auth", icon: SiJsonwebtokens },
-      { name: "MongoDB", icon: SiMongodb },
-      { name: "SQL / MySQL", icon: SiMysql },
+      {
+        name: "Node.js",
+        icon: SiNodedotjs,
+        color: "#339933",
+      },
+      {
+        name: "Express",
+        icon: SiExpress,
+        color: "#444444",
+      },
+      {
+        name: "JWT Auth",
+        icon: SiJsonwebtokens,
+        color: "#D63AFF",
+      },
+      {
+        name: "MongoDB",
+        icon: SiMongodb,
+        color: "#47A248",
+      },
+      {
+        name: "SQL / MySQL",
+        icon: SiMysql,
+        color: "#4479A1",
+      },
     ],
   },
+
   {
     title: "Tools & Platforms",
     items: [
-      { name: "Git", icon: SiGit },
-      { name: "GitHub", icon: SiGithub },
-      { name: "Docker", icon: SiDocker },
+      {
+        name: "Git",
+        icon: SiGit,
+        color: "#F05032",
+      },
+      {
+        name: "GitHub",
+        icon: SiGithub,
+        color: "#181717",
+      },
+      {
+        name: "Docker",
+        icon: SiDocker,
+        color: "#2496ED",
+      },
     ],
   },
 ];
@@ -135,7 +205,10 @@ const TechStack = () => {
                       transition={{ duration: 0.3 }}
                       className="group flex items-center gap-4 rounded-xl px-4 py-3 border border-white/10 hover:border-yellow-400 hover:bg-yellow-400 transition-all duration-300"
                     >
-                      <Icon className="text-xl text-white/70 group-hover:text-black transition-colors" />
+                     <Icon 
+                      style={{ color: tech.color }}
+  className="text-2xl group-hover:scale-110 transition-all duration-300"
+                      />
                       <span className="text-sm font-medium text-white/80 group-hover:text-black transition-colors">
                         {tech.name}
                       </span>
