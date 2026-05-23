@@ -150,7 +150,7 @@ const About = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="mt-8 text-lg text-gray-500 font-light leading-relaxed"
+              className="mt-8 text-lg text-gray-500 italic font-light leading-relaxed"
             >
               I design and build modern digital products with a strong focus on
               usability, performance, and clean aesthetics — helping brands turn
