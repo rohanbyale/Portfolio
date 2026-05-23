@@ -73,7 +73,7 @@ export default function StatementSection() {
           viewport={{ once: true }}
           className="mb-12 flex items-center gap-4"
         >
-          <span className="text-[10px] border border-yellow-400/30 rounded-2xl p-2 px-4 font-black uppercase tracking-[0.5em] text-yellow-400">
+          <span className="text-[10px] border border-yellow-400/30 rounded-md p-2 px-4 font-black uppercase tracking-[0.5em] text-yellow-400">
             Statement
           </span>
         </motion.div>
