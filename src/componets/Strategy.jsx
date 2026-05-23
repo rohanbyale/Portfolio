@@ -85,8 +85,8 @@ const Process = () => {
               viewport={{ once: true }}
               className="flex items-center gap-4 mb-8"
             >
-              <p className="text-yellow-400 border p-2 rounded-2xl text-[10px] font-black tracking-[0.5em] uppercase">
-                Workflow // 04
+              <p className="text-yellow-400 border p-2 rounded-md text-[10px] font-black tracking-[0.5em] uppercase">
+                Workflow 
               </p>
             </motion.div>
 
