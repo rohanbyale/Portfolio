@@ -20,8 +20,8 @@ const projects = [
     category: "",
     image: "/urb.png",
     stack: ["React.js", "Three.js", "GLSL"],
-    liveLink: "https://urban-rise-builders.vercel.app/",
-    githubLink: "https://github.com/rohanbyale/Consturction-Company-Website",
+    liveLink: "https://dog-studio-3d-eight.vercel.app/",
+    githubLink: "https://github.com/rohanbyale/Dog-Studio-3D-",
   },
   {
     title: "Wood Craft",
