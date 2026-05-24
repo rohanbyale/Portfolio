@@ -18,7 +18,7 @@ const projects = [
   {
     title: "Dog Studio ",
     category: "",
-    image: "/urb.png",
+    image: "/dog.png",
     stack: ["React.js", "Three.js", "GLSL"],
     liveLink: "https://dog-studio-3d-eight.vercel.app/",
     githubLink: "https://github.com/rohanbyale/Dog-Studio-3D-",
