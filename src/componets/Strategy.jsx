@@ -8,25 +8,25 @@ const steps = [
   {
     step: "01",
     title: "Discover",
-    desc: "Understanding the problem, audience, and business goals before touching pixels or code.",
+    desc: "Understanding the problem, audience, and business goals before touching pixels or code. We deep dive into data and insights to build a bulletproof strategic foundation.",
     tags: ["Research", "Strategy", "Context"],
   },
   {
     step: "02",
     title: "Design",
-    desc: "Crafting clean interfaces, strong systems, and experiences that feel effortless.",
+    desc: "Crafting clean interfaces, strong systems, and experiences that feel effortless. Every layout and interaction is meticulously planned to balance form, function, and brand identity.",
     tags: ["Systems", "Prototyping"],
   },
   {
     step: "03",
     title: "Develop",
-    desc: "Building fast, scalable, maintainable products using modern frameworks.",
+    desc: "Building fast, scalable, maintainable products using modern frameworks. Writing clean, production-ready code ensuring seamless integration and rock-solid architectural stability.",
     tags: ["Frontend", "Performance", "Logic"],
   },
   {
     step: "04",
     title: "Refine",
-    desc: "Polishing performance, motion, accessibility, and final delivery.",
+    desc: "Polishing performance, motion, accessibility, and final delivery. Optimizing every component and frame through rigorous testing to guarantee a premium user experience.",
     tags: ["QA", "Animation", "Deployment"],
   },
 ];
