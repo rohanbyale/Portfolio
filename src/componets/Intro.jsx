@@ -46,20 +46,28 @@ const IntroSection = () => {
           <motion.div 
             animate={isLoaded ? { opacity: 0, scale: 0.9 } : { opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: cinemaxEase }}
-            className="absolute inset-0 pointer-events-none flex items-center justify-center"
+            className="absolute inset-0 pointer-events-none flex items-center justify-center z-0"
           >
             {/* Moving Technical Horizon Line */}
-            <div className="absolute w-full h-[1px] bg-white/[0.04] top-1/2 left-0" />
-            <div className="absolute h-full w-[1px] bg-white/[0.04] left-1/2 top-0" />
+            <div className="absolute w-full h-[1px] bg-yellow-400 top-1/2 left-0" />
+            <div className="absolute h-full w-[1px] bg-yellow-400 left-1/2 top-0" />
+
+            {/* SVG Animated Radar/Scope Element */}
+            <svg 
+              className="absolute w-[28rem] h-[28rem] opacity-20 text-neutral-400 animate-spin" 
+              style={{ animationDuration: '25s' }} 
+              viewBox="0 0 200 200"
+            >
+              <circle cx="100" cy="100" r="98" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 8" />
+              <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" strokeWidth="0.25" />
+              <path d="M 100 2 L 100 20 M 100 180 L 100 198 M 2 100 L 20 100 M 180 100 L 198 100" stroke="currentColor" strokeWidth="1" />
+            </svg>
           </motion.div>
 
           {/* BACKGROUND SYSTEM LABELS (Fades outward instantly on load) */}
           <div className="absolute inset-x-12 top-10 flex justify-between items-center text-[9px] font-mono tracking-[0.4em] text-neutral-500 z-50">
             <motion.span animate={isLoaded ? { y: -20, opacity: 0 } : { y: 0 }} transition={{ duration: 0.5, ease: cinemaxEase }}>
-              DATA_CORE_INIT // NULL_0x9
-            </motion.span>
-            <motion.span animate={isLoaded ? { y: -20, opacity: 0 } : { y: 0 }} transition={{ duration: 0.5, ease: cinemaxEase, delay: 0.05 }}>
-              SYS_2026
+              WEB DEVELOPER
             </motion.span>
           </div>
 
@@ -83,7 +91,7 @@ const IntroSection = () => {
               />
 
               {/* Central Primary Value Cluster */}
-              <div className="relative mix-blend-difference flex flex-col items-center">
+              <div className="relative mix-blend-difference flex flex-col items-center z-20">
                 
                 {/* Secondary Fast Metric Label */}
                 <div className="h-4 overflow-hidden mb-2 relative w-full flex justify-center">
@@ -101,7 +109,9 @@ const IntroSection = () => {
                     key={count}
                     initial={{ y: "40%", opacity: 0 }}
                     animate={{ y: "0%", opacity: 1 }}
-                    className="text-[18vw] md:text-[11rem] font-black tracking-tighter text-white tabular-nums font-sans leading-none select-none"
+                    className={`text-[18vw] md:text-[11rem] font-black tracking-tighter tabular-nums font-sans leading-none select-none ${
+                      count === 100 ? 'text-yellow-400' : 'text-white'
+                    }`}
                     style={{ fontWeight: 950 }}
                   >
                     {count}
@@ -127,16 +137,6 @@ const IntroSection = () => {
 
             </div>
           </motion.div>
-
-          {/* LOWER PERIMETER METRIC LABELS */}
-          <div className="absolute inset-x-12 bottom-10 flex justify-between items-center text-[9px] font-mono tracking-[0.4em] text-neutral-500 z-50">
-            <motion.span animate={isLoaded ? { y: 20, opacity: 0 } : { y: 0 }} transition={{ duration: 0.5, ease: cinemaxEase }}>
-              © ALL RIGHTS RESERVED
-            </motion.span>
-            <motion.span animate={isLoaded ? { y: 20, opacity: 0 } : { y: 0 }} transition={{ duration: 0.5, ease: cinemaxEase, delay: 0.05 }}>
-              EST. // MATRIX_LAB
-            </motion.span>
-          </div>
 
           {/* SYSTEM OVERVIEW SWEEP BLINDS */}
           {/* Subtle high-contrast light flashes matching luxury creative index animations */}
