@@ -5,8 +5,34 @@ import { FiArrowUpRight, FiGithub } from "react-icons/fi";
 
 // 1. DATA CONFIGURATION
 const projects = [
+
+ {
+    title: "UrbanRise Builders",
+    category: "",
+    image: "/urb.png",
+    stack: ["React.js", "Lenis", "Tailwind CSS"],
+    liveLink: "https://urban-rise-builders.vercel.app/",
+    githubLink: "https://github.com/rohanbyale/Consturction-Company-Website",
+  },
   {
-    title: "Mamoth Murals",
+    title: "Wood Craft",
+    category: "",
+    image: "/woodcraft.png",
+    stack: ["React.js", "Locomotive", "Tailwind CSS"],
+    liveLink: "https://wood-craft-website.vercel.app/",
+    githubLink: "https://github.com/rohanbyale/Wood-Craft-Website",
+  },
+
+  {
+    title: " Aurum jewellery",
+    // category: "Personal Site",
+    image: "/aurum.png",
+    stack: ["React.js", "Tailwind Css", "Motion"],
+    liveLink: "https://gold-website-aurum.vercel.app/",
+    githubLink: "https://github.com/rohanbyale/Jewellery-shop-website",
+  },
+    {
+    title: "Mammoth Murals",
     category: "Personal Website",
     image: "https://assets.awwwards.com/awards/submissions/2025/09/68b7aa90dbac3889881012.jpg",
     stack: ["React.js", "Tailwind"],
@@ -14,44 +40,20 @@ const projects = [
     githubLink: "https://github.com/rohanbyale/Mammoth-Murals",
   },
   {
-    title: "Ochi Design",
-    category: "Portfolio",
-    image: "/ochi.png",
-    stack: ["React.js", "Locomotive", "Tailwind"],
-    liveLink: "https://ochi-de-sign.netlify.app/",
-    githubLink: "https://github.com/rohanbyale/Ochi-Design",
+    title: "Rs Mart",
+    // category: "Bl",
+    image: "/rs.png",
+    stack: ["React.js", "Tailwind CSS", "Framer Motion"],
+    liveLink: "https://rs-mart-website.vercel.app/",
+    githubLink: "https://github.com/rohanbyale/RS_MART_Website",
   },
   {
-    title: "Lazarev",
-    category: "Personal Site",
-    image: "/lazarev.png",
-    stack: ["Html", "JS", "Gsap"],
-    liveLink: "https://portfoli0-lazrev.netlify.app/",
-    // githubLink: "https://github.com",
-  },
-  {
-    title: "The Garrison Times",
-    category: "Blog",
-    image: "/peaky.png",
-    stack: ["Html", "JS", "Gsap"],
-    liveLink: "https://the-garrison-times.netlify.app/",
-    githubLink: "https://github.com/rohanbyale/The-Garrison-Times",
-  },
-  {
-    title: "Works Studio",
-    category: "Blog",
-    image: "/worksstudio.png",
-    stack: ["Html", "JS", "Gsap"],
-    liveLink: "https://works-studioro.netlify.app/",
-    githubLink: "https://github.com/rohanbyale/Works-Studio?tab=readme-ov-file",
-  },
-  {
-    title: "Task Management",
+    title: "Skill Swap Platform",
     category: "FullStack",
-    image: "https://cdn.dribbble.com/userupload/42675164/file/original-cbd633c1b343179c6494dc643abf6cda.png?format=webp&resize=400x300&vertical=center",
-    stack: ["React.js", "Tailwind", ],
-    // liveLink: "https://the-garrison-times.netlify.app/",
-    githubLink: "https://github.com/rohanbyale/Task_Management",
+    image: "/skillswap.png",
+    stack: ["React.js", "Socket.io", "WebRTC" ],
+    liveLink: "https://skillswap-platform-frontend.onrender.com/",
+    // githubLink: "https://github.com/rohanbyale/Task_Management",
   },
 ];
 
