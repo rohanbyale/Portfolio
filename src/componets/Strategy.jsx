@@ -154,12 +154,12 @@ const ProcessSection = () => {
         {/* UPPER LEFT HEADLINE AREA */}
         <div className="w-full max-w-7xl mx-auto text-left mb-6 md:mb-14 z-10 px-2">
           <div className="flex items-center justify-start gap-4 mb-2 md:mb-4">
-            <p className="text-yellow-400 border border-yellow-400/20 px-3 py-1 rounded-xl text-[10px] font-black tracking-[0.5em] uppercase bg-yellow-400/5">
-              Workflow // 04
+            <p className="text-yellow-400 border border-yellow-400/20 px-3 py-1 rounded-md text-[10px] font-black tracking-[0.5em] uppercase bg-yellow-400/5">
+              Workflow 
             </p>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none uppercase mb-2 md:mb-4">
-            The <span className="text-neutral-800 italic font-light">Method.</span>
+            The <span className="text-gray-500 italic font-light">Method.</span>
           </h2>
           <p className="text-neutral-500 text-[10px] sm:text-xs uppercase tracking-widest font-mono">
             [ structured — execution ]
