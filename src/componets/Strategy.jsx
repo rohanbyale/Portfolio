@@ -1,183 +1,218 @@
-'use client'
+"use client";
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-
-/* ------------------ Curtain Reveal Component ------------------ */
-const CurtainWord = ({ children, delay = 0, color = "bg-yellow-400" }) => {
-  return (
-    <span className="relative inline-flex overflow-hidden pb-1 mr-[0.25em] translate-y-1">
-      <motion.span 
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: delay + 0.1 }}
-        viewport={{ once: true }}
-        className="relative z-10 inline-block"
-      >
-        {children}
-      </motion.span>
-      <motion.div
-        initial={{ y: "-100%" }}
-        whileInView={{ y: "100%" }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 0.6,
-          ease: [0.76, 0, 0.24, 1],
-          delay: delay,
-        }}
-        // Dynamic color prop
-        className={`absolute inset-0 ${color} z-20 pointer-events-none`}
-      />
-    </span>
-  );
-};
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const steps = [
   {
     step: "01",
     title: "Discover",
     desc: "Understanding the problem, audience, and business goals before touching pixels or code.",
-    tags: ["Research", "Strategy", "Context"]
+    tags: ["Research", "Strategy", "Context"],
   },
   {
     step: "02",
     title: "Design",
     desc: "Crafting clean interfaces, strong systems, and experiences that feel effortless.",
-    tags: [ "Systems", "Prototyping"]
+    tags: ["Systems", "Prototyping"],
   },
   {
     step: "03",
     title: "Develop",
     desc: "Building fast, scalable, maintainable products using modern frameworks.",
-    tags: ["Frontend", "Performance", "Logic"]
+    tags: ["Frontend", "Performance", "Logic"],
   },
   {
     step: "04",
     title: "Refine",
     desc: "Polishing performance, motion, accessibility, and final delivery.",
-    tags: ["QA", "Animation", "Deployment"]
+    tags: ["QA", "Animation", "Deployment"],
   },
 ];
 
-const Process = () => {
-  const containerRef = useRef(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"]
-  });
+const ProcessSection = () => {
+  const container = useRef(null);
+  const cardRefs = useRef([]);
 
-  const scaleY = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+  useGSAP(
+    () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const cardElements = cardRefs.current.filter(Boolean);
+      const totalCards = cardElements.length;
+
+      if (totalCards === 0) return;
+
+      let mm = gsap.matchMedia();
+
+      mm.add(
+        {
+          isMobile: "(max-width: 767px)",
+          isDesktop: "(min-width: 768px)",
+        },
+        (context) => {
+          let { isMobile } = context.conditions;
+
+          // 1. INITIAL POSITIONING (Optimized with GPU hardware acceleration hints)
+          cardElements.forEach((card, index) => {
+            if (index === 0) {
+              gsap.set(card, { 
+                y: "0%", 
+                scale: 1, 
+                rotation: 0, 
+                zIndex: 1,
+                force3D: true // Enforces independent composite layer on mobile GPU
+              });
+            } else {
+              gsap.set(card, { 
+                y: isMobile ? "140%" : "100%", 
+                scale: 1, 
+                rotation: 0, 
+                zIndex: index + 1,
+                force3D: true // Enforces independent composite layer on mobile GPU
+              });
+            }
+          });
+
+          // 2. TIMELINE CONFIGURATION
+          const scrollTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: container.current.querySelector(".sticky-cards"),
+              start: "top top",
+              end: `+=${window.innerHeight * (totalCards - 1) * (isMobile ? 0.95 : 0.7)}`,
+              pin: true,
+              // Fixed mobile layout lag by softening the scrub slightly on mobile to damp finger touch spikes
+              scrub: isMobile ? 0.6 : 0.3, 
+              pinSpacing: true,
+              invalidateOnRefresh: true,
+              anticipatePin: 1 // Prevents jerky snapping right when the container locks on mobile
+            },
+          });
+
+          // 3. CARD STACKING LOOP
+          for (let i = 0; i < totalCards - 1; i++) {
+            const currentCard = cardElements[i];
+            const nextCard = cardElements[i + 1];
+            const position = i;
+
+            scrollTimeline.to(
+              currentCard,
+              {
+                y: "0%", 
+                scale: 0.92,
+                rotation: 2.5,
+                duration: 1,
+                ease: "power1.inOut",
+                force3D: true, // Prevents subpixel text blur redraws mid-flight
+                lazy: true // Batch DOM operations to avoid layout thrashing
+              },
+              position
+            );
+
+            scrollTimeline.to(
+              nextCard,
+              {
+                y: "0%",
+                duration: 1,
+                ease: "power1.out",
+                force3D: true, // Prevents subpixel text blur redraws mid-flight
+                lazy: true // Batch DOM operations to avoid layout thrashing
+              },
+              position
+            );
+          }
+        },
+        container
+      );
+
+      const resizeObserver = new ResizeObserver(() => {
+        ScrollTrigger.refresh();
+      });
+
+      if (container.current) {
+        resizeObserver.observe(container.current);
+      }
+
+      return () => {
+        resizeObserver.disconnect();
+        mm.revert();
+      };
+    },
+    { scope: container }
+  );
 
   return (
-    <section 
-      ref={containerRef}
-      className="relative bg-[#050505] text-white py-48 px-6 lg:px-24 overflow-hidden"
-    >
+    <div className="relative w-full bg-[#050505] text-white overflow-x-hidden" ref={container}>
+      
+      {/* BACKGROUND DECORATION */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-yellow-400/5 blur-[120px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      {/* STICKY WORKSPACE */}
+      <div className="sticky-cards relative h-screen w-full flex flex-col justify-center overflow-hidden px-4 sm:px-6 lg:px-24">
         
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-40 gap-8">
-          <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-4 mb-8"
-            >
-              <p className="text-yellow-400 border p-2 rounded-md text-[10px] font-black tracking-[0.5em] uppercase">
-                Workflow 
-              </p>
-            </motion.div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.85] uppercase"
-            >
-              The <span className="text-gray-500 italic font-light">Method.</span>
-            </motion.h2>
-          </div>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-neutral-500 text-sm uppercase tracking-widest font-mono mb-4"
-          >
-            [ structured — execution ]
-          </motion.p>
-        </div>
-
-        <div className="relative">
-          <motion.div 
-            style={{ scaleY, originY: 0 }}
-            className="absolute left-[15px] md:left-1/2 top-0 w-[1px] h-full bg-gradient-to-b from-yellow-400 via-yellow-400 to-transparent z-0 hidden md:block"
-          />
-
-          <div className="flex flex-col gap-32">
-            {steps.map((itemData, i) => (
-              <ProcessStep key={i} data={itemData} index={i} />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const ProcessStep = ({ data, index }) => {
-  const isEven = index % 2 === 0;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`relative flex flex-col md:flex-row items-center w-full ${isEven ? 'md:flex-row-reverse' : ''}`}
-    >
-      <div className="w-full md:w-1/2 px-8 md:px-20">
-        <div className="group relative">
-          <motion.span 
-            className="absolute -top-16 -left-10 text-[12rem] font-black text-white/[0.03] select-none group-hover:text-yellow-400/10 transition-colors duration-700 group-hover:-translate-y-4 transition-transform"
-          >
-            {data.step}
-          </motion.span>
-
-          <div className="relative z-10">
-            <h3 className="text-4xl md:text-5xl font-bold mb-6 uppercase tracking-tighter flex flex-wrap">
-              {data.title.split(" ").map((word, i) => (
-                <CurtainWord key={i} delay={0.1} color="bg-emerald-500">{word}</CurtainWord>
-              ))}
-            </h3>
-            <p className="text-neutral-400 text-lg font-light leading-relaxed mb-8 flex flex-wrap">
-              {data.desc.split(" ").map((word, i) => (
-                <CurtainWord key={i} delay={0.2 + (i * 0.03)} color="bg-yellow-400">{word}</CurtainWord>
-              ))}
+        {/* UPPER LEFT HEADLINE AREA */}
+        <div className="w-full max-w-7xl mx-auto text-left mb-6 md:mb-14 z-10 px-2">
+          <div className="flex items-center justify-start gap-4 mb-2 md:mb-4">
+            <p className="text-yellow-400 border border-yellow-400/20 px-3 py-1 rounded-xl text-[10px] font-black tracking-[0.5em] uppercase bg-yellow-400/5">
+              Workflow // 04
             </p>
-            
-            <div className="flex flex-wrap gap-3">
-              {data.tags.map(tag => (
-                <span key={tag} className="px-3 py-1 border border-white/10 rounded-full text-[9px] uppercase tracking-widest text-neutral-500 group-hover:border-yellow-400/30 group-hover:text-yellow-400 transition-all">
-                  {tag}
-                </span>
-              ))}
-            </div>
           </div>
+          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none uppercase mb-2 md:mb-4">
+            The <span className="text-neutral-800 italic font-light">Method.</span>
+          </h2>
+          <p className="text-neutral-500 text-[10px] sm:text-xs uppercase tracking-widest font-mono">
+            [ structured — execution ]
+          </p>
         </div>
-      </div>
 
-      <div className="absolute left-[15px] md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center z-20">
-        <motion.div 
-          whileInView={{ scale: [0, 1.5, 1], opacity: [0, 1] }}
-          className="w-3 h-3 bg-yellow-400 rounded-full shadow-[0_0_15px_#facc15]" 
-        />
-        <div className="absolute w-8 h-8 border border-yellow-400/20 rounded-full animate-ping" />
-      </div>
+        {/* DOWNSIDE CARDS BLOCK */}
+        <div className="relative w-[90vw] md:w-[82vw] max-w-7xl mx-auto h-[65vh] sm:h-[500px] md:h-[480px] z-20">
+          {steps.map((itemData, i) => (
+            <div
+              key={itemData.step}
+              ref={(el) => {
+                cardRefs.current[i] = el;
+              }}
+              className="absolute inset-0 h-full w-full bg-yellow-400 text-black border border-black/10 rounded-3xl p-6 sm:p-10 md:p-16 flex flex-col justify-between overflow-hidden shadow-[0_30px_70px_-15px_rgba(0,0,0,0.4)] select-none touch-action-pan-y will-change-transform"
+            >
+              {/* Massive Industrial Number Stamp */}
+              <span className="absolute bottom-2 right-2 md:-top-16 md:-right-10 text-7xl sm:text-[14rem] md:text-[26rem] font-black text-black/[0.04] select-none pointer-events-none font-sans leading-none">
+                {itemData.step}
+              </span>
 
-      <div className="hidden md:block w-1/2" />
-    </motion.div>
+              <div className="relative z-10 w-full h-full flex flex-col justify-between">
+                <div>
+                  <span className="text-[10px] md:text-sm font-mono text-black/60 tracking-widest block mb-1 md:mb-3 font-bold">
+                    PHASE {itemData.step}
+                  </span>
+                  <h3 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-1 md:mb-4 uppercase tracking-tighter text-black">
+                    {itemData.title}
+                  </h3>
+                  <p className="text-black/90 text-sm sm:text-base md:text-lg lg:text-xl font-normal leading-snug sm:leading-relaxed max-w-2xl">
+                    {itemData.desc}
+                  </p>
+                </div>
+
+                {/* Industrial Dark Badges */}
+                <div className="flex flex-wrap gap-1.5 md:gap-2.5 mt-4">
+                  {itemData.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-1 md:px-4 md:py-1.5 border border-black/10 rounded-full text-[8px] md:text-[10px] uppercase tracking-widest text-black/70 bg-black/5 font-mono font-bold"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
   );
 };
 
-export default Process;
+export default ProcessSection;
