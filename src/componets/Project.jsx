@@ -14,6 +14,15 @@ const projects = [
     liveLink: "https://urban-rise-builders.vercel.app/",
     githubLink: "https://github.com/rohanbyale/Consturction-Company-Website",
   },
+
+  {
+    title: "Dog Studio ",
+    category: "",
+    image: "/urb.png",
+    stack: ["React.js", "Three.js", "GLSL"],
+    liveLink: "https://urban-rise-builders.vercel.app/",
+    githubLink: "https://github.com/rohanbyale/Consturction-Company-Website",
+  },
   {
     title: "Wood Craft",
     category: "",
@@ -22,6 +31,7 @@ const projects = [
     liveLink: "https://wood-craft-website.vercel.app/",
     githubLink: "https://github.com/rohanbyale/Wood-Craft-Website",
   },
+ 
 
   {
     title: " Aurum jewellery",
