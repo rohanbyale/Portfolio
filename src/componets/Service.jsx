@@ -29,7 +29,7 @@ const Services = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const handleDownloadCV = () => {
-    const pdfUrl = "/RohanByale[1]"; 
+    const pdfUrl = "/Resume"; 
     const link = document.createElement("a");
     link.href = pdfUrl;
     link.download = "/RohanByale[1].pdf";
