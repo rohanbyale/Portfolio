@@ -32,7 +32,7 @@ const Services = () => {
     const pdfUrl = "/Resume"; 
     const link = document.createElement("a");
     link.href = pdfUrl;
-    link.download = "/RohanByale[1].pdf";
+    link.download = "/RohanByhale[1].pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
