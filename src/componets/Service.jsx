@@ -59,7 +59,7 @@ const Services = () => {
   md:w-[11vw]
 
 ">
-  Services
+  Craft
 </h1>
 
           </motion.p>
