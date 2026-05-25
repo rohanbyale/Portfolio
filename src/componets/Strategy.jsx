@@ -203,27 +203,39 @@ const ProcessSection = () => {
               ref={(el) => {
                 cardRefs.current[i] = el;
               }}
-              className="absolute inset-0 h-full w-full bg-yellow-400 text-black border border-black/10 rounded-3xl p-6 sm:p-10 md:p-16 flex flex-col justify-between overflow-hidden shadow-[0_30px_70px_-15px_rgba(0,0,0,0.4)] select-none touch-action-pan-y will-change-transform"
+              className={`absolute inset-0 h-full w-full ${
+                i % 2 === 0 ? "bg-yellow-400 text-black border-black/10 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.4)]" : "bg-white text-black border-white/10 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.6)]"
+              } border rounded-3xl p-6 sm:p-10 md:p-16 flex flex-col justify-between overflow-hidden select-none touch-action-pan-y will-change-transform`}
             >
               {/* Massive Industrial Number Stamp */}
-              <span className="absolute bottom-2 right-2 md:-top-16 md:-right-10 text-7xl sm:text-[14rem] md:text-[26rem] font-black text-black/[0.04] select-none pointer-events-none font-sans leading-none">
+              <span className={`absolute bottom-2 right-2 md:-top-16 md:-right-10 text-7xl sm:text-[14rem] md:text-[26rem] font-black ${
+                i % 2 === 0 ? "text-black/[0.04]" : "text-yellow-400/[0.12]"
+              } select-none pointer-events-none font-sans leading-none`}>
                 {itemData.step}
               </span>
 
               {/* Related Icon centered right in the middle background layer */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 text-black/[0.05] select-none pointer-events-none z-0">
+              <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 ${
+                i % 2 === 0 ? "text-black/[0.06]" : "text-yellow-400/[0.18]"
+              } select-none pointer-events-none z-0`}>
                 {itemData.icon}
               </div>
 
               <div className="relative z-10 w-full h-full flex flex-col justify-between">
                 <div>
-                  <span className="text-[10px] md:text-sm font-mono text-black/60 tracking-widest block mb-1 md:mb-3 font-bold">
+                  <span className={`text-[10px] md:text-sm font-mono ${
+                    i % 2 === 0 ? "text-black/60" : "text-yellow-500"
+                  } tracking-widest block mb-1 md:mb-3 font-bold`}>
                     PHASE {itemData.step}
                   </span>
-                  <h3 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-1 md:mb-4 uppercase tracking-tighter text-black">
+                  <h3 className={`text-2xl sm:text-4xl md:text-6xl font-bold mb-1 md:mb-4 uppercase tracking-tighter ${
+                    i % 2 === 0 ? "text-black" : "text-neutral-900"
+                  }`}>
                     {itemData.title}
                   </h3>
-                  <p className="text-black/90 text-sm sm:text-base md:text-lg lg:text-xl font-normal leading-snug sm:leading-relaxed max-w-2xl">
+                  <p className={`${
+                    i % 2 === 0 ? "text-black/90" : "text-neutral-700"
+                  } text-sm sm:text-base md:text-lg lg:text-xl font-normal leading-snug sm:leading-relaxed max-w-2xl`}>
                     {itemData.desc}
                   </p>
                 </div>
@@ -233,7 +245,11 @@ const ProcessSection = () => {
                   {itemData.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 md:px-4 md:py-1.5 border border-black/10 rounded-full text-[8px] md:text-[10px] uppercase tracking-widest text-black/70 bg-black/5 font-mono font-bold"
+                      className={`px-2.5 py-1 md:px-4 md:py-1.5 border rounded-full text-[8px] md:text-[10px] uppercase tracking-widest font-mono font-bold ${
+                        i % 2 === 0 
+                          ? "border-black/10 text-black/70 bg-black/5" 
+                          : "border-yellow-400/30 text-yellow-600 bg-yellow-400/5"
+                      }`}
                     >
                       {tag}
                     </span>
