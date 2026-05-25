@@ -10,24 +10,53 @@ const steps = [
     title: "Discover",
     desc: "Understanding the problem, audience, and business goals before touching pixels or code. We deep dive into data and insights to build a bulletproof strategic foundation.",
     tags: ["Research", "Strategy", "Context"],
+    // Added icon property
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    ),
   },
   {
     step: "02",
     title: "Design",
     desc: "Crafting clean interfaces, strong systems, and experiences that feel effortless. Every layout and interaction is meticulously planned to balance form, function, and brand identity.",
     tags: ["Systems", "Prototyping"],
+    // Added icon property
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"></path>
+        <path d="M12 2V22"></path>
+        <path d="M2 12H22"></path>
+        <path d="M12 2C14.7715 4.68629 16.5 8.16334 16.5 12C16.5 15.8367 14.7715 19.3137 12 22C9.22847 19.3137 7.5 15.8367 7.5 12C7.5 8.16334 9.22847 4.68629 12 2Z"></path>
+      </svg>
+    ),
   },
   {
     step: "03",
     title: "Develop",
     desc: "Building fast, scalable, maintainable products using modern frameworks. Writing clean, production-ready code ensuring seamless integration and rock-solid architectural stability.",
     tags: ["Frontend", "Performance", "Logic"],
+    // Added icon property
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <polyline points="16 18 22 12 16 6"></polyline>
+        <polyline points="8 6 2 12 8 18"></polyline>
+      </svg>
+    ),
   },
   {
     step: "04",
     title: "Refine",
     desc: "Polishing performance, motion, accessibility, and final delivery. Optimizing every component and frame through rigorous testing to guarantee a premium user experience.",
     tags: ["QA", "Animation", "Deployment"],
+    // Added icon property
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+      </svg>
+    ),
   },
 ];
 
@@ -180,6 +209,11 @@ const ProcessSection = () => {
               <span className="absolute bottom-2 right-2 md:-top-16 md:-right-10 text-7xl sm:text-[14rem] md:text-[26rem] font-black text-black/[0.04] select-none pointer-events-none font-sans leading-none">
                 {itemData.step}
               </span>
+
+              {/* Related Icon centered right in the middle background layer */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 text-black/[0.05] select-none pointer-events-none z-0">
+                {itemData.icon}
+              </div>
 
               <div className="relative z-10 w-full h-full flex flex-col justify-between">
                 <div>
