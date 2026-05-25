@@ -386,7 +386,7 @@ const HeroSection = () => {
             </motion.div>
 
             <motion.a
-              href="/Resume.pdf"
+              href="/Resumee.pdf"
               download
               whileHover={{ x: 5, color: "#facc15" }}
               className="flex items-center gap-3 text-neutral-400 text-[11px] font-black uppercase tracking-widest transition-all cursor-pointer"
