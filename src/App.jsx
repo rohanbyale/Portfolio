@@ -25,6 +25,31 @@ const ScrollToTop = () => {
   return null;
 };
 
+  // Smooth Scroll
+useEffect(() => {
+  const lenis = new Lenis({
+    lerp: 0.015,          // Extremely smooth
+    smoothWheel: true,
+    wheelMultiplier: 0.55,
+    touchMultiplier: 1,
+    syncTouch: false,
+    autoRaf: false,
+  });
+
+  let rafId;
+
+  const raf = (time) => {
+    lenis.raf(time);
+    rafId = requestAnimationFrame(raf);
+  };
+
+  rafId = requestAnimationFrame(raf);
+
+  return () => {
+    cancelAnimationFrame(rafId);
+    lenis.destroy();
+  };
+}, []);
 const App = () => {
   const [showIntro, setShowIntro] = useState(true);
 
