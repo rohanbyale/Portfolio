@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Lenis from "lenis";
+
 // Layout
 import Navbar from "./componets/Navbar";
 import Footer from "./componets/Footer";
@@ -25,31 +25,9 @@ const ScrollToTop = () => {
   return null;
 };
 
-  // Smooth Scroll
-useEffect(() => {
-  const lenis = new Lenis({
-    lerp: 0.015,          // Extremely smooth
-    smoothWheel: true,
-    wheelMultiplier: 0.55,
-    touchMultiplier: 1,
-    syncTouch: false,
-    autoRaf: false,
-  });
 
-  let rafId;
 
-  const raf = (time) => {
-    lenis.raf(time);
-    rafId = requestAnimationFrame(raf);
-  };
 
-  rafId = requestAnimationFrame(raf);
-
-  return () => {
-    cancelAnimationFrame(rafId);
-    lenis.destroy();
-  };
-}, []);
 const App = () => {
   const [showIntro, setShowIntro] = useState(true);
 
