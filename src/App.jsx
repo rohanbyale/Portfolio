@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-
+import Lenis from "lenis";
 // Layout
 import Navbar from "./componets/Navbar";
 import Footer from "./componets/Footer";
