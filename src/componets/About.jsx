@@ -102,7 +102,7 @@ const About = () => {
               className="relative rounded-2xl overflow-hidden aspect-[4/5]"
             >
               <img
-                src="/rohan.jpg"
+                src="/file_0000000052007207b5070cc311dd0e50.png"
                 alt="Portrait"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
