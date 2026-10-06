@@ -15,6 +15,12 @@ const TRAIL_IMAGES = [
   "https://avatars.githubusercontent.com/u/1923096?s=200&v=4",
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNhoXisDruJMDAq3Ltd-wuaMW2lGxck9wAKw&s",
   "https://pbs.twimg.com/profile_images/1390736294666506242/_D_h6aWq_400x400.png",
+   "https://www.ahmedabdat.com/icons/Framer-Motion.png",
+  "https://raw.githubusercontent.com/nuxt/modules/674149075378ae7d27f3df6d906eff088539a845/icons/nuxt3-lenis.svg",
+  "https://pbs.twimg.com/profile_images/1713633504431394816/h28jJ1qM_400x400.jpg",
+  "https://avatars.githubusercontent.com/u/1923096?s=200&v=4",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNhoXisDruJMDAq3Ltd-wuaMW2lGxck9wAKw&s",
+  
  
 ];
 
