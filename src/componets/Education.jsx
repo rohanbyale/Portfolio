@@ -59,7 +59,7 @@ const education = [
 
 export default function Education() {
   return (
-    <section className="bg-[#050505] text-white py-32 px-6 lg:px-24 border-t border-white/5">
+    <section className=" relative z-10 bg-[#050505] rounded-t-3xl min-h-screen text-white py-32 px-6 lg:px-24 border-t border-white/5">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20">
         
         {/* LEFT SIDE: STICKY HEADER */}
