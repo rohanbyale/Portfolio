@@ -38,7 +38,7 @@ const CircularRole = () => {
       </defs>
 
       <text
-        fill="#FDC700"
+        fill="#050505"
         fontSize="9"
         fontWeight="600"
         letterSpacing="3"
@@ -54,10 +54,10 @@ const CircularRole = () => {
 /* ------------------ Main Component ------------------ */
 const About = () => {
   return (
-    <section className="relative w-full bg-[#050505] text-white px-6 lg:px-24 py-32 overflow-hidden">
+    <section className="relative w-full bg-[#FDC700] rounded-t-3xl text-[#050505] px-6 lg:px-24 py-32 overflow-hidden">
 
       {/* Background Glow */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-yellow-400/5 blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#050505]/5 blur-[140px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
 
@@ -69,7 +69,7 @@ const About = () => {
             viewport={{ once: true }}
             className="flex items-center gap-4"
           >
-            <p className="border p-2 rounded-md uppercase tracking-[0.4em] text-xs font-bold text-yellow-400">
+            <p className="border border-[#050505] p-2 rounded uppercase tracking-[0.4em] text-xs font-bold text-[#050505]">
               About Me
             </p>
           </motion.div>
@@ -82,7 +82,7 @@ const About = () => {
             className="uppercase text-5xl lg:text-5xl font-medium tracking-tight leading-[0.9] max-w-5xl"
           >
             Building digital <br />
-            <span className="italic font-light text-gray-500">
+            <span className="italic font-light text-[#fff]/60">
               experiences
             </span>{" "}
             with purpose.
@@ -102,11 +102,11 @@ const About = () => {
               className="relative rounded-2xl overflow-hidden aspect-[4/5]"
             >
               <img
-                src="/file_0000000052007207b5070cc311dd0e50.png"
+                src="/cc.png"
                 alt="Portrait"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#FDC700] via-transparent to-transparent opacity-60" />
             </motion.div>
 
             {/* DEV IDENTITY BADGE */}
@@ -119,7 +119,7 @@ const About = () => {
               <CircularRole />
 
               {/* Center Name */}
-              <div className="absolute inset-0 m-auto w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center shadow-2xl">
+              <div className="absolute inset-0 m-auto w-24 h-24 bg-[#050505] rounded-full flex items-center justify-center shadow-2xl">
                 <span className="text-black font-black tracking-tight text-sm text-center leading-tight">
                  <img className="w-full h-full object-cover " src="/rohanlogo.png" alt="" />
                 </span>
@@ -135,10 +135,10 @@ const About = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="text-2xl lg:text-4xl text-gray-200 leading-snug font-light"
+              className="text-2xl lg:text-4xl text-[#050505] leading-snug font-light"
             >
               A multidisciplinary{" "}
-              <span className="text-white font-medium underline underline-offset-8 decoration-yellow-400/30">
+              <span className="text-[#050505] font-medium underline underline-offset-8 decoration-[#050505]/30">
                 Web Developer & Designer
               </span>{" "}
               crafting interfaces that feel intuitive, intentional, and human.
@@ -150,7 +150,7 @@ const About = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="mt-8 text-lg text-gray-500 italic font-light leading-relaxed"
+              className="mt-8 text-lg p-3 rounded-2xl text-[#050505]/70 font-normal leading-relaxed"
             >
               I design and build modern digital products with a strong focus on
               usability, performance, and clean aesthetics — helping brands turn
@@ -158,7 +158,7 @@ const About = () => {
             </motion.p>
 
             {/* STATS */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-12 mt-20 border-t border-white/10 pt-12">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-12 mt-20 border-t border-[#050505]/20 pt-12">
               {[
                 { label: "Execution", val: "20+" },
                 { label: "Standard", val: "Quality" },
@@ -173,13 +173,13 @@ const About = () => {
                   viewport={{ once: true }}
                   className="group cursor-default"
                 >
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-500 mb-3 group-hover:text-yellow-400 transition-colors duration-300 font-bold">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-[#050505]/60 mb-3 group-hover:text-[#050505] transition-colors duration-300 font-bold">
                     {stat.label}
                   </p>
                   <h4 className="text-4xl md:text-5xl font-black tracking-tighter flex items-center gap-1">
                     {stat.val}
                     {stat.val.includes('+') && (
-                      <span className="text-yellow-400 text-2xl font-light">+</span>
+                      <span className="text-[#050505] text-2xl font-light">+</span>
                     )}
                   </h4>
                 </motion.div>
@@ -199,12 +199,12 @@ const About = () => {
               <Link 
                 to="/contactpage"
                 onClick={() => window.scrollTo(0, 0)}
-                className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full border border-white/20 overflow-hidden hover:border-yellow-400 transition no-underline text-white hover:text-black"
+                className="group  relative inline-flex items-center gap-3 px-10 py-4 rounded-full border border-[#050505]/40 overflow-hidden hover:border-[#050505] transition no-underline text-[#050505] hover:text-[#FDC700]"
               >
                 <span className="relative z-10 font-medium transition">
                    Let’s Work Together →
                 </span>
-                <div className="absolute inset-0 bg-yellow-400 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                <div className="absolute inset-0 bg-[#050505] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-300 ease-out" />
               </Link>
             </motion.div>
           </div>
