@@ -235,7 +235,7 @@ export default function PerspectiveSection() {
   return (
     <section
       ref={container}
-      className="bg-[#050505] relative h-[80vh] flex items-center justify-center [perspective:1500px] overflow-hidden"
+      className="relative z-10 bg-[#050505] rounded-t-3xl min-h-screen relative h-[80vh] flex items-center justify-center [perspective:1500px] overflow-hidden"
     >
       {/* ── Canvas trail layer ── */}
       <canvas
